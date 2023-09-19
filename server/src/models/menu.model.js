@@ -1,4 +1,4 @@
-const menuItems = require("./menu.mogo");
+const menuItems = require("./menu.mongo");
 
 async function getMenu() {
   return await menuItems.find(
@@ -28,3 +28,7 @@ async function saveMenuItem(menuItem) {
     console.log(`Could not save menu item: ${err} `);
   }
 }
+
+module.exports = {
+  getMenu,
+};
