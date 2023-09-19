@@ -22,7 +22,6 @@ async function getMenu() {
     API_KEY
   );
 
-  console.log(conversions);
   if (conversions) {
     const menuWithConversions = menu.map((menuItem) => {
       const convertedPrices = {};
@@ -45,23 +44,23 @@ async function getMenu() {
   return menu;
 }
 
-async function saveMenuItem(menuItem) {
-  try {
-    await menuItems.updateOne(
-      {
-        itemName: menuItem.name,
-      },
-      {
-        itemName: menuItem.name,
-      },
-      {
-        upsert: true,
-      }
-    );
-  } catch (err) {
-    console.log(`Could not save menu item: ${err} `);
-  }
-}
+// async function saveMenuItem(menuItem) {
+//   try {
+//     await menuItems.updateOne(
+//       {
+//         itemName: menuItem.name,
+//       },
+//       {
+//         itemName: menuItem.name,
+//       },
+//       {
+//         upsert: true,
+//       }
+//     );
+//   } catch (err) {
+//     console.log(`Could not save menu item: ${err} `);
+//   }
+// }
 
 async function addNewMenuItem(menuItem) {
   await menuItems.findOneAndUpdate(
