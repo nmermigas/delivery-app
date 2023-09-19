@@ -14,7 +14,7 @@ const menuItemSchema = new mongoose.Schema({
 
 const orderSchema = new mongoose.Schema({
   items: [menuItemSchema],
-  totalAmount: {
+  totalCost: {
     type: Number,
     required: true,
   },

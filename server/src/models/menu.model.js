@@ -44,6 +44,12 @@ async function getMenu() {
   return menu;
 }
 
+// TODO: find Id of Dish by its name
+
+async function getMenuItemByName(itemName) {
+  return await menuItems.findOne({ itemName });
+}
+
 // async function saveMenuItem(menuItem) {
 //   try {
 //     await menuItems.updateOne(
@@ -75,4 +81,5 @@ async function addNewMenuItem(menuItem) {
 module.exports = {
   getMenu,
   addNewMenuItem,
+  getMenuItemByName,
 };

@@ -1,4 +1,5 @@
 const orders = require("./orders.mongo");
+const { getMenuItemByName } = require("./menu.model");
 
 async function getAllOrders() {
   return await orders.find(
@@ -11,6 +12,29 @@ async function getAllOrders() {
   );
 }
 
+async function calculateTotalCost(order) {
+  let totalCost = 0;
+
+  for (const item of order.items) {
+    const menuItem = await getMenuItemByName(item.itemName);
+
+    if (menuItem) {
+      const costOfItem = menuItem.price;
+      totalCost += costOfItem * item.quantity;
+    }
+  }
+
+  return totalCost;
+}
+
+async function submitNewOrder(order) {
+  order["totalCost"] = await calculateTotalCost(order);
+  await orders.findOneAndUpdate({ _id: order._id }, order, {
+    upsert: true,
+  });
+}
+
 module.exports = {
   getAllOrders,
+  submitNewOrder,
 };
