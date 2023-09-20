@@ -1,36 +1,37 @@
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View All Orders</title>
+    <title>Orders</title>
+    <style>
+      table { border-collapse: collapse; width: 80%; margin: 20px auto; } th, td
+      { border: 1px solid #ddd; padding: 8px; text-align: left; } th {
+      background-color: #f2f2f2; }
+    </style>
   </head>
   <body>
-    <h1>Incoming Orders</h1>
-    <table>
-      <thread>
-        <tr>
-          <th>Order Number</th>
-          <th>Items</th>
-          <th>Total Amount</th>
-          <th>Order Time</th>
-        </tr>
-      </thread>
-    </table>
-    <tbody>
-      {{#each orders}}
-        <tr>
-          <td>{{this.orderId}}</td>
-          <td>
-            <ul>
-              {{#each this.items}}
-                <li>{{this.quanity}} x {{this._id}}</li>
-              {{/each}}
-            </ul>
-          </td>
-          <td>{{this.totalCost}}</td>
-          <td>{{this.orderTime}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
+    <h1>You have {{orders.length}} incoming orders</h1>
+    {{#each orders}}
+      <h2>Order Details</h2>
+      <p>Order Number: {{this.orderId}}</p>
+      <p>Total Cost: {{this.totalCost}}</p>
+      <p>Order Date: {{this.orderTime}}</p>
+
+      <h2>Items</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Item Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each this.items}}
+            <tr>
+              <td>{{this.quantity}}</td>
+              <td>{{this._id}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/each}}
   </body>
 </html>
