@@ -1,8 +1,8 @@
 const { getAllOrders, submitNewOrder } = require("../../models/orders.model");
 
 async function httpGetAllOrders(req, res) {
-  return res.status(200).json(await getAllOrders());
-  // return await getAllOrders();
+  // return res.status(200).json(await getAllOrders());
+  return await getAllOrders();
 }
 
 function isQuantityValid(order) {

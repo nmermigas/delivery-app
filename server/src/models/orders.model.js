@@ -38,6 +38,9 @@ async function getLatestOrderId() {
 }
 
 async function saveOrder(order) {
+  console.log(`At saveOrder ${order}`);
+  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+
   await orders.findOneAndUpdate(
     {
       orderId: order.orderId,
@@ -50,12 +53,19 @@ async function saveOrder(order) {
 }
 
 async function submitNewOrder(order) {
+  console.log(`At submitNewOrder ${order} `);
+  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+
   const newOrderId = (await getLatestOrderId()) + 1;
   const totalCost = await calculateTotalCost(order);
-  const newOrder = Object.assign(order, {
+  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+  const newOrder = {
+    ...order,
     orderId: newOrderId,
     totalCost,
-  });
+  };
+
+  console.log(`NEW ORDER ${JSON.stringify(newOrder)}`);
 
   await saveOrder(newOrder);
 }

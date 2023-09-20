@@ -12,7 +12,8 @@
     {{#each orders}}
       <h2>Order Details</h2>
       <p>Order Number: {{this.orderId}}</p>
-      <p>Total Cost: {{this.totalCost}}</p>
+      <p>Total Items: {{this.items.length}}</p>
+      <p>Total Cost: <b>{{this.totalCost}}€</b></p>
       <p>Order Date: {{this.orderTime}}</p>
 
       <h2>Items</h2>
@@ -27,7 +28,7 @@
           {{#each this.items}}
             <tr>
               <td>{{this.quantity}}</td>
-              <td>{{this._id}}</td>
+              <td>{{this.itemName}}</td>
             </tr>
           {{/each}}
         </tbody>
