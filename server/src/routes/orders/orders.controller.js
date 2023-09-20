@@ -1,16 +1,20 @@
 const { getAllOrders, submitNewOrder } = require("../../models/orders.model");
 
 async function httpGetAllOrders(req, res) {
-  return res.status(200).json(await getAllOrders());
+  return await getAllOrders();
+}
+
+function isQuantityValid(order) {
+  return order.items.every((item) => item.quantity >= 1);
 }
 
 async function httpSubmitNewOrder(req, res) {
   const order = req.body;
   console.log(order);
 
-  if (!order.items) {
+  if (!order.items || !isQuantityValid(order)) {
     return res.status(400).json({
-      error: "Order cannot be empty!",
+      error: "Please place a valid order!",
     });
   }
 

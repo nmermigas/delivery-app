@@ -2,10 +2,17 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const { engine } = require("express-handlebars");
 
 const api = require("./routes/api");
 
 const app = express();
+
+app.engine("handlebars", engine({}));
+
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
+// app.set("views", path.join(__dirname, "src", "views"));
 
 // app.use(
 //   cors({

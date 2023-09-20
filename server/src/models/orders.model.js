@@ -1,6 +1,8 @@
 const orders = require("./orders.mongo");
 const { getMenuItemByName } = require("./menu.model");
 
+const DEFAULT_ORDER_ID = 0;
+
 async function getAllOrders() {
   return await orders.find(
     {},
@@ -24,14 +26,38 @@ async function calculateTotalCost(order) {
     }
   }
 
-  return totalCost;
+  return totalCost.toFixed(2);
+}
+
+async function getLatestOrderId() {
+  const latestOrder = await orders.findOne().sort("-orderId");
+  if (!latestOrder) {
+    return DEFAULT_ORDER_ID;
+  }
+  return latestOrder.orderId;
+}
+
+async function saveOrder(order) {
+  await orders.findOneAndUpdate(
+    {
+      orderId: order.orderId,
+    },
+    order,
+    {
+      upsert: true,
+    }
+  );
 }
 
 async function submitNewOrder(order) {
-  order["totalCost"] = await calculateTotalCost(order);
-  await orders.findOneAndUpdate({ _id: order._id }, order, {
-    upsert: true,
+  const newOrderId = (await getLatestOrderId()) + 1;
+  const totalCost = await calculateTotalCost(order);
+  const newOrder = Object.assign(order, {
+    orderId: newOrderId,
+    totalCost,
   });
+
+  await saveOrder(newOrder);
 }
 
 module.exports = {

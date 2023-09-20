@@ -28,7 +28,7 @@ async function getMenu() {
 
       Object.keys(conversions).forEach((currency) => {
         const rate = conversions[currency];
-        const convertedPrice = menuItem.price * rate;
+        const convertedPrice = (menuItem.price * rate).toFixed(2);
         convertedPrices[`price_${currency}`] = convertedPrice;
       });
 

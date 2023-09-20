@@ -22,6 +22,9 @@ const orderSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  orderId: {
+    type: Number,
+  },
 });
 
 const Order = mongoose.model("Order", orderSchema);

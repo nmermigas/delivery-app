@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View All Orders</title>
+  </head>
+  <body>
+    <h1>Incoming Orders</h1>
+    <table>
+      <thread>
+        <tr>
+          <th>Order Number</th>
+          <th>Items</th>
+          <th>Total Amount</th>
+          <th>Order Time</th>
+        </tr>
+      </thread>
+    </table>
+    <tbody>
+      {{#each orders}}
+        <tr>
+          <td>{{this.orderId}}</td>
+          <td>
+            <ul>
+              {{#each this.items}}
+                <li>{{this.quanity}} x {{this._id}}</li>
+              {{/each}}
+            </ul>
+          </td>
+          <td>{{this.totalCost}}</td>
+          <td>{{this.orderTime}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </body>
+</html>
