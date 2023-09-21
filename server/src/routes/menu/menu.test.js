@@ -53,15 +53,15 @@ describe("Menu API", () => {
       price: 7.99,
     };
 
-    // test("It should respond with 201 created", async () => {
-    //   const response = await request(app)
-    //     .post("/v1/menu")
-    //     .send(completeMenuItemData)
-    //     .expect("Content-Type", /json/)
-    //     .expect(201);
+    test("It should respond with 201 created", async () => {
+      const response = await request(app)
+        .post("/v1/menu")
+        .send(completeMenuItemData)
+        .expect("Content-Type", /json/)
+        .expect(201);
 
-    //   expect(response.body).toMatchObject(completeMenuItemData);
-    // });
+      expect(response.body).toMatchObject(completeMenuItemData);
+    });
 
     test("It should catch missing required properties", async () => {
       const response = await request(app)
