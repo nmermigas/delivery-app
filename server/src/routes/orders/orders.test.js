@@ -90,15 +90,15 @@ describe("Orders API", () => {
 
     const emptyOrder = {};
 
-    // test("It should respond with 201 created", async () => {
-    //   const response = await request(app)
-    //     .post("/v1/orders")
-    //     .send(completeOrderData)
-    //     .expect("Content-Type", /json/)
-    //     .expect(201);
+    test("It should respond with 201 created", async () => {
+      const response = await request(app)
+        .post("/v1/orders")
+        .send(completeOrderData)
+        .expect("Content-Type", /json/)
+        .expect(201);
 
-    //   expect(response.body).toMatchObject(completeOrderData);
-    // });
+      expect(response.body).toMatchObject(completeOrderData);
+    });
 
     test("It should catch invalid quantity", async () => {
       const response = await request(app)
@@ -123,15 +123,5 @@ describe("Orders API", () => {
         error: "Please place a valid order!",
       });
     });
-
-    // test("It should catch invalid dishes", async () => {
-    //   const response = await request(app)
-    //     .post("/v1/orders")
-    //     .send(orderWithInvalidItem)
-    //     .expect("Content-Type", /json/)
-    //     .expect(400);
-
-    //   expect(response.body).toBe("Item 'Spaghetti' is not on the menu");
-    // });
   });
 });
