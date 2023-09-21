@@ -21,14 +21,14 @@ To meet the requirements of an online delivery shop, the backend includes the fo
 
 2. **Currency Support:**
    - Item prices are stored in Euro (EUR).
-   - The API is designed to support more currencies using publicly available APIs (e.g., [Fixer.io](http://fixer.io)) for currency conversion.
+   - The API is designed to support more currencies using publicly available APIs (using [Fixer.io](http://fixer.io)) for currency conversion.
 
 3. **Order Handling:**
    - Incoming orders are processed and managed within the system.
    - Item availability and order validation are ensured.
 
 4. **Merchant Dashboard:**
-   - A simple web page is provided for merchants to view incoming orders.
+   - A web page is provided for merchants to view incoming orders.
 
 ## Getting Started
 
