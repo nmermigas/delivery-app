@@ -92,8 +92,11 @@ The backend API will be accessible at http://localhost:8000 by default.
 /v1/menu
 
 GET: Get the menu with all the items. So: http://localhost:8000/v1/menu
+It is suggested to hit this endpoint through an API Test/Dev tool like Postman.
 
 POST: Add a new item to the menu. So : http://localhost:8000/v1/menu
+It is suggested to hit this endpoint through an API Test/Dev tool like Postman.
+
 
  - The acceptable categories are only: "Appetizers", "Drinks", "Main Dishes", "Desserts".
 
@@ -113,6 +116,8 @@ POST: Add a new item to the menu. So : http://localhost:8000/v1/menu
 GET: Get a list of incoming orders in a webpage. So: http://localhost:8000/v1/orders
 
 POST: Place a new order. So: http://localhost:8000/v1/orders
+It is suggested to hit this endpoint through an API Test/Dev tool like Postman.
+
 
 - Example of a post request in JSON format:
 
