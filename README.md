@@ -67,15 +67,53 @@ The backend API will be accessible at http://localhost:8000 by default.
 
 /v1/menu
 
-GET: Get the menu with all the items.
+GET: Get the menu with all the items. So: http://localhost:8000/v1/menu
 
-POST: Add a new item to the menu.
+POST: Add a new item to the menu. So : http://localhost:8000/v1/menu
+
+ - The acceptable categories are only: "Appetizers", "Drinks", "Main Dishes", "Desserts".
+
+ - Example of a post request in JSON format:
+
+```
+{
+   "itemName": "Carbonara",
+   "category": "Main Dishes",
+   "description": "Italian Dish",
+   "price": 12.99,
+}
+```
 
 /v1/orders
 
-GET: Get a list of incoming orders in a webpage.
+GET: Get a list of incoming orders in a webpage. So: http://localhost:8000/v1/orders
 
-POST: Place a new order.
+POST: Place a new order. So: http://localhost:8000/v1/orders
+
+- Example of a post request in JSON format:
+
+```
+{
+    "items": [
+        {
+            "itemName": "Pizza",
+            "quantity": 3
+        },
+        {
+            "itemName": "Caprese Salad",
+            "quantity": 1
+        },
+        {
+            "itemName": "Garlic Bread",
+            "quantity": 7
+        },
+        {
+            "itemName": "Soda",
+            "quantity": 3
+        }
+    ]
+}
+```
 
 ### Testing
 
