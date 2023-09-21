@@ -47,7 +47,7 @@ To meet the requirements of an online delivery shop, the backend includes the fo
    
 2. Navigate to the project directory:
     ```bash
-    cd delivery-app-backend
+    cd delivery-app
 
 3. Install dependencies:
    ```bash
