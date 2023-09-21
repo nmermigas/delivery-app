@@ -16,7 +16,7 @@ The Delivery App Backend is a Node.js-based application designed to support onli
 To meet the requirements of an online delivery shop, the backend includes the following features:
 
 1. **Menu Management:**
-   - The application supports a menu with a minimum of 3 categories (e.g., Appetizers, Drinks, Main Dishes).
+   - The application supports a menu with a minimum of 4 categories (e.g., Appetizers, Drinks, Main Dishes, Desserts).
    - Each category includes at least 2 items.
 
 2. **Currency Support:**
@@ -53,9 +53,33 @@ To meet the requirements of an online delivery shop, the backend includes the fo
    ```bash
     npm install
 
+
+## Configuration
+
+To run this application locally, you'll need to set up the necessary environment variables in an `.env` file that is already located in the server folder. Here's how to do it:
+
+1. **MONGO_URL**: This variable should contain the MongoDB connection URL. You will need to set up a MongoDB database and obtain the connection URL.
+
+   Example `.env` file content:
+   ```env
+   MONGO_URL=mongodb://username:password@localhost:27017/database_name
+   ```
+   
+   Replace username, password, localhost, 27017, and database_name with your actual MongoDB credentials that I have provided you with.
+
+2. **API_KEY**:  This variable should contain the API key required for currency conversion.
+
+   Example `.env` file content:
+   ```env
+   API_KEY=your_api_key_here
+   ```
+   Replace your_api_key_here with the actual API key provided to you.
+
+
 ### Usage
 
 To start the backend server, run the following command in the root directory:
+
 
  ```bash
  npm run server
