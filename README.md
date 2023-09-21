@@ -56,6 +56,36 @@ To meet the requirements of an online delivery shop, the backend includes the fo
 ### Usage
 
 To start the backend server, run the following command in the root directory:
+
  ```bash
  npm run server
+```
+
+The backend API will be accessible at http://localhost:8000 by default.
+
+### API Endpoints
+
+/v1/menu
+
+GET: Get the menu with all the items.
+
+POST: Add a new item to the menu.
+
+/v1/orders
+
+GET: Get a list of incoming orders in a webpage.
+
+POST: Place a new order.
+
+### Testing
+
+To run the tests, run the following command in the root directory:
+```
+npm run test
+```
+
+This README provides an overview of the backend application, its features, requirements, and how to get started with it.
+
+
+
 
