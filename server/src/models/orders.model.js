@@ -1,6 +1,8 @@
 const orders = require("./orders.mongo");
 const { getMenuItemByName } = require("./menu.model");
 
+const menu = require("./menu.mongo");
+
 const DEFAULT_ORDER_ID = 0;
 
 async function getAllOrders() {
@@ -38,8 +40,8 @@ async function getLatestOrderId() {
 }
 
 async function saveOrder(order) {
-  console.log(`At saveOrder ${order}`);
-  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+  // console.log(`At saveOrder ${order}`);
+  // console.log(`NEW ORDER ${JSON.stringify(order)}`);
 
   await orders.findOneAndUpdate(
     {
@@ -52,20 +54,32 @@ async function saveOrder(order) {
   );
 }
 
-async function submitNewOrder(order) {
-  console.log(`At submitNewOrder ${order} `);
-  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+async function isItemOnMenu(order) {
+  for (const orderItem of order.items) {
+    // Check if the item is in the menu database
+    const menuItem = await menu.findOne({ itemName: orderItem.itemName });
 
+    // If menuItem is null, it means the item is not on the menu
+    if (!menuItem) {
+      throw new Error(`Item '${orderItem.itemName}' is not on the menu.`);
+    }
+  }
+}
+
+async function submitNewOrder(order) {
+  // console.log(`At submitNewOrder ${order} `);
+  // console.log(`NEW ORDER ${JSON.stringify(order)}`);
+  isItemOnMenu(order);
   const newOrderId = (await getLatestOrderId()) + 1;
   const totalCost = await calculateTotalCost(order);
-  console.log(`NEW ORDER ${JSON.stringify(order)}`);
+  // console.log(`NEW ORDER ${JSON.stringify(order)}`);
   const newOrder = {
     ...order,
     orderId: newOrderId,
     totalCost,
   };
 
-  console.log(`NEW ORDER ${JSON.stringify(newOrder)}`);
+  // console.log(`NEW ORDER ${JSON.stringify(newOrder)}`);
 
   await saveOrder(newOrder);
 }

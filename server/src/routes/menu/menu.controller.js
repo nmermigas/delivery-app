@@ -13,7 +13,7 @@ async function httpAddNewMenuItem(req, res) {
     });
   }
   await addNewMenuItem(menuItem);
-  return res.status(200).json(menuItem);
+  return res.status(201).json(menuItem);
 }
 
 module.exports = { httpGetMenu, httpAddNewMenuItem };

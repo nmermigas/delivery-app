@@ -11,7 +11,7 @@ function isQuantityValid(order) {
 
 async function httpSubmitNewOrder(req, res) {
   const order = req.body;
-  console.log(order);
+  // console.log(order);
 
   if (!order.items || !isQuantityValid(order)) {
     return res.status(400).json({
@@ -20,7 +20,7 @@ async function httpSubmitNewOrder(req, res) {
   }
 
   await submitNewOrder(order);
-  return res.status(200).json(order);
+  return res.status(201).json(order);
 }
 
 module.exports = {

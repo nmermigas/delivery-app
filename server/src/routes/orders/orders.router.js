@@ -11,7 +11,7 @@ ordersRouter.post("/", httpSubmitNewOrder);
 ordersRouter.get("/", async (req, res) => {
   try {
     const orders = await httpGetAllOrders();
-    console.log(orders);
+    // console.log(orders);
     if (orders) {
       res.status(200).render("viewOrders", { orders });
     } else {

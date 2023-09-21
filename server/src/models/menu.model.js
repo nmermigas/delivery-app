@@ -33,7 +33,7 @@ async function getMenu() {
       });
 
       convertedPrices[`price_${baseCurrency}`] = menuItem.price;
-      console.log(convertedPrices);
+      // console.log(convertedPrices);
       return {
         ...menuItem.toObject(),
         prices: convertedPrices,
